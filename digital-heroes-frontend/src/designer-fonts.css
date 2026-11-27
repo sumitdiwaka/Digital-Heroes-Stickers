@@ -1,0 +1,9 @@
+/* The SAME DejaVu fonts the print engine uses -> the editor matches the proof. Loaded only when the designer opens. */
+@font-face { font-family: 'DH Sans'; src: url('/fonts/dh-sans.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'DH Sans'; src: url('/fonts/dh-sans-bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'DH Condensed'; src: url('/fonts/dh-condensed.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'DH Condensed'; src: url('/fonts/dh-condensed-bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'DH Serif'; src: url('/fonts/dh-serif.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'DH Serif'; src: url('/fonts/dh-serif-bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'DH Mono'; src: url('/fonts/dh-mono.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'DH Mono'; src: url('/fonts/dh-mono-bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
