@@ -45,7 +45,7 @@ router.post('/uploads/asset', upload.single('file'), asyncHandler(async (req, re
 router.get('/uploads/asset/:id', validate({ params: idParam }), asyncHandler(async (req, res) => {
   const a = await Asset.findOne({ _id: req.params.id, user: req.user._id });
   if (!a) throw notFound('Asset not found');
-  res.type(a.mime); storage.stream(a.fileKey).pipe(res);
+  res.type(a.mime); storage.sendTo(res, a.fileKey);
 }));
 
 // ---------------------------------------------------------------- validation (live, no save)

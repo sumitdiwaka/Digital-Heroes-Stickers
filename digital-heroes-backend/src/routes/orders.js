@@ -147,7 +147,7 @@ router.get('/:id/proofs/:version/preview.png', validate({ params: v.version }), 
   const o = await loadOrder(req);
   const p = await Proof.findOne({ order: o._id, version: req.params.version });
   if (!p) throw notFound('Proof not found');
-  res.type('png'); storage.stream(p.previewKey).pipe(res);
+  res.type('png'); storage.storage.sendTo(res, p.previewKey);;
 }));
 
 // POST /api/orders/:id/proofs/:version/approve

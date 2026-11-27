@@ -4,6 +4,10 @@ const path = require('path');
 
 const num = (v, d) => (v === undefined || v === '' ? d : Number(v));
 
+if (process.env.NODE_ENV === 'production' && (process.env.JWT_SECRET || '').length < 32) {
+  throw new Error('JWT_SECRET must be set to a long random value (32+ chars) in production');
+}
+
 module.exports = {
   nodeEnv: process.env.NODE_ENV || 'development',
   isProd: process.env.NODE_ENV === 'production',

@@ -266,9 +266,9 @@ export default function Designer() {
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto lg:grid lg:grid-cols-[272px_minmax(0,1fr)_340px] lg:overflow-hidden">
         <aside className="hidden overflow-y-auto border-r border-paper-300 bg-paper-100 p-4 lg:block">{ToolsPanel}</aside>
 
-        <main className="relative h-[54dvh] shrink-0 bg-paper-200 p-2 sm:p-4 lg:h-auto">
+        <main className="relative h-[54dvh] shrink-0 bg-paper-200 p-2 sm:p-4 lg:h-auto lg:overflow-y-auto">
           <div className="grid-lines-light absolute inset-0" aria-hidden />
-          <div className="relative h-full" style={{ perspective: 1400 }}>
+          <div className="relative h-full lg:h-[max(100%,650px)]" style={{ perspective: 1400 }}>
             <div className="h-full" style={{ transform: 'rotateX(2deg)', transformOrigin: 'center bottom' }}>
               <EditorCanvas dims={dims} spec={spec} areas={areas} elements={els} background={background} selectedId={selected} invalidIds={invalidIds} assetUrls={assetUrls}
                 onSelect={(id) => { setSelected(id); if (id) setTab('edit'); }} onGestureStart={pushHistory} onPatch={patchRaw} />

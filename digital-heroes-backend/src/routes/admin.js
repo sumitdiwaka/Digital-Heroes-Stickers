@@ -188,7 +188,7 @@ router.get('/orders/:id/files/:name', validate({ params: z.object({ id: objectId
   const o = await unlockedOrder(req);
   const f = o.printFiles.find((x) => x.name === req.params.name); // whitelist lookup - no user-controlled paths
   if (!f) throw notFound('File not found');
-  res.attachment(f.name); storage.stream(f.key).pipe(res);
+  res.attachment(f.name); storage.sendTo(res, f.key);
 }));
 
 // POST /api/admin/orders/:id/regenerate-files   ?png=true|false

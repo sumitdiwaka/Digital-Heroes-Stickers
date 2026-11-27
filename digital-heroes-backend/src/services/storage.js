@@ -22,8 +22,16 @@ async function put(key, buffer) {
 }
 const read = (key) => fsp.readFile(abs(key));
 const stream = (key) => fs.createReadStream(abs(key));
+const sendTo = (res, key) => {
+  const s = fs.createReadStream(abs(key));
+  s.on('error', () => {
+    if (!res.headersSent) res.status(404).type('application/json').send(JSON.stringify({ success: false, error: { code: 'FILE_MISSING', message: 'This file is no longer available on the server' } }));
+    else res.destroy();
+  });
+  s.pipe(res);
+};
 const exists = async (key) => { try { await fsp.access(abs(key)); return true; } catch { return false; } };
 const remove = (key) => fsp.rm(abs(key), { force: true, recursive: true });
 const absolutePath = abs; // used only by local-driver helpers (zip streaming)
 
-module.exports = { put, read, stream, exists, remove, absolutePath };
+module.exports = { put, read, stream, exists, remove, absolutePath,sendTo };
